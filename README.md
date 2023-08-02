@@ -1,5 +1,5 @@
 # linkedin_s
-LinkedIn Scrapping tool hits various API and uses selenium to get basic data of any user on LinkedIn.
+LinkedIn Scrapping tool hits various API to get basic data of any user on LinkedIn.
 
 Requirements
 1. requests
