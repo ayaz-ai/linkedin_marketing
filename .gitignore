@@ -1,5 +1,6 @@
 # Ignore directory
-./__pycache__/
+__pycache__/
+*.pyc
 
 # Ignore All CSV
 *.csv
