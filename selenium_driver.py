@@ -9,13 +9,14 @@ def create_driver():
     options.add_experimental_option("detach", True)
     options.add_argument(r"--user-data-dir=C:\\Users\\ayazr\\AppData\\Local\\Google\\Chrome\\User Data")
     options.add_argument(r'--profile-directory=Default')
+    # options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
     return driver
 
 def visit_profile(driver, link):
     profile_url = link
     driver.get(profile_url)
-    time.sleep(50)
+    time.sleep(20)
     class_name = 'text-heading-xlarge inline t-24 v-align-middle break-words'
     element = driver.find_element(By.XPATH, f"//*[contains(@class, '{class_name}')]")
     text = element.text

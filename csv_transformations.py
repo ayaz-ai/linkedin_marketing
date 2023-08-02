@@ -15,7 +15,7 @@ def csv_to_list(file_path):
 
     return url_list
 
-def write_output(data_dictionary):
+def json_to_csv(data_dictionary):
     output_file = "output.csv"
     with open(output_file, 'w', newline='') as csvfile:
         fieldnames = ['LinkedIn Profile URL', 'Name', 'Numbers', 'Email']
@@ -23,4 +23,4 @@ def write_output(data_dictionary):
 
         writer.writeheader()
         for url, data in data_dictionary.items():
-            writer.writerow({'LinkedIn Profile URL': url, 'Name':['name'], 'Email': data['email']})
+            writer.writerow({'LinkedIn Profile URL': url, 'Name':data['name'], 'Email': data['email']})
