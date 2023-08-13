@@ -17,10 +17,10 @@ def csv_to_list(file_path):
 
 def json_to_csv(data_dictionary):
     output_file = "output.csv"
-    with open(output_file, 'w', newline='') as csvfile:
-        fieldnames = ['LinkedIn Profile URL', 'Name', 'Numbers', 'Email']
+    with open(output_file, 'w', encoding='utf-8', newline='') as csvfile:
+        fieldnames = ['LinkedIn Profile URL', 'Name', 'Numbers', 'Email', 'Title', 'Company', 'Website', 'HQ Phone', 'Industry', 'Company Size', 'Headquaters']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
         for url, data in data_dictionary.items():
-            writer.writerow({'LinkedIn Profile URL': url, 'Name':data['name'], 'Email': data['email']})
+            writer.writerow({'LinkedIn Profile URL': url, 'Name':data['name'], 'Email': data['email'], 'Title': data['title'], 'Company': data['company_name'], 'Website': data['website'], 'HQ Phone': data['hq_phone'], 'Industry': data['industry'], 'Company Size': data['company_size'], 'Headquaters': data['headquaters']})

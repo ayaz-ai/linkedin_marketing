@@ -19,7 +19,14 @@ def contact_api_hit(url, key):
     return data_dictionary
 
 def web_selenium(url):
-    name, email = email_fetcher(url)
+    name, email, title, company_name, website, hq_phone, industry, company_size, headquaters = email_fetcher(url)
     data_dictionary[url]['email'] = email
     data_dictionary[url]['name'] = name
+    data_dictionary[url]['title'] = title
+    data_dictionary[url]['company_name'] = company_name
+    data_dictionary[url]['website'] = website
+    data_dictionary[url]['hq_phone'] = hq_phone
+    data_dictionary[url]['industry'] = industry
+    data_dictionary[url]['company_size'] = company_size
+    data_dictionary[url]['headquaters'] = headquaters
     return data_dictionary

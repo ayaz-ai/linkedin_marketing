@@ -4,6 +4,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 import time
 
+from company_fetcher import visit_company_page, scrap_about
+
 def create_driver():
     options = Options()
     options.add_experimental_option("detach", True)
@@ -19,9 +21,11 @@ def visit_profile(driver, link):
     time.sleep(20)
     class_name = 'text-heading-xlarge inline t-24 v-align-middle break-words'
     element = driver.find_element(By.XPATH, f"//*[contains(@class, '{class_name}')]")
-    text = element.text
-    print(text)
-    return text
+    name = element.text
+    title_element = driver.find_element(By.CLASS_NAME, "x_rtuS5")
+    title = title_element.text
+    print(name, title)
+    return [name, title]
 
 
 def check_email_element(driver):
@@ -70,7 +74,10 @@ def get_business_email(driver):
 
 def email_fetcher(url):
     driver = create_driver()
-    name = visit_profile(driver, url)
+    name, title = visit_profile(driver, url)
     email = email_resolver(driver)
+    company_name = visit_company_page(driver)
+    website, hq_phone, industry, company_size, headquaters = scrap_about(driver)
+    time.sleep(20)
     driver.quit()
-    return [name, email]
+    return [name, email, title, company_name, website, hq_phone, industry, company_size, headquaters]
