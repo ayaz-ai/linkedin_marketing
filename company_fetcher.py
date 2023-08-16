@@ -19,7 +19,7 @@ def scrap_about(driver):
     dl_element = soup.find('dl', class_='overflow-hidden')
 
     website = 'NULL'
-    hq_phone = 'NULL'
+    # hq_phone = 'NULL'
     industry = 'NULL'
     company_size = 'NULL'
     headquaters = 'NULL'
@@ -30,15 +30,15 @@ def scrap_about(driver):
         if dt_text == 'Website':
             print(f"{dt_text}: {dd_text}")
             website = dd_text
-        if dt_text == 'Phone':
-            # Find the first <span> within the <dd> element
-            span_element = dd_element.find('span', attrs={'dir': 'ltr'})
-            if span_element:
-                phone_span = span_element.get_text(strip=True)
-                print(f"{dt_text}: {phone_span}")
-                hq_phone = phone_span 
-            else:
-                print(f"No <span> element with dir='ltr' found for {dt_text}.")
+        # if dt_text == 'Phone':
+        #     # Find the first <span> within the <dd> element
+        #     span_element = dd_element.find('span', attrs={'dir': 'ltr'})
+        #     if span_element:
+        #         phone_span = span_element.get_text(strip=True)
+        #         print(f"{dt_text}: {phone_span}")
+        #         hq_phone = phone_span 
+        #     else:
+        #         print(f"No <span> element with dir='ltr' found for {dt_text}.")
         if dt_text == 'Industry':
             print(f"{dt_text}: {dd_text}")
             industry = dd_text
@@ -49,4 +49,4 @@ def scrap_about(driver):
             print(f"Headquaters: {dd_text}")
             headquaters = dd_text
 
-    return [website, hq_phone, industry, company_size, headquaters]
+    return [website, industry, company_size, headquaters]

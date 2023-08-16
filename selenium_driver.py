@@ -72,12 +72,27 @@ def get_business_email(driver):
     text_content = element.text
     return text_content
 
+def get_hq_number(driver):
+    try:
+        driver.find_element(By.CLASS_NAME, "x_XitPs")
+        number_availablity = 'Yes'
+    except NoSuchElementException:
+        pass
+
+    if number_availablity == 'Yes' :
+        element = driver.find_element(By.CLASS_NAME, "x_XitPs")
+        text_content = element.text
+        return text_content
+    else:
+        return 'No Number'
+
 def email_fetcher(url):
     driver = create_driver()
     name, title = visit_profile(driver, url)
     email = email_resolver(driver)
+    hq_phone = get_hq_number(driver)
     company_name = visit_company_page(driver)
-    website, hq_phone, industry, company_size, headquaters = scrap_about(driver)
+    website, industry, company_size, headquaters = scrap_about(driver)
     time.sleep(20)
     driver.quit()
     return [name, email, title, company_name, website, hq_phone, industry, company_size, headquaters]
