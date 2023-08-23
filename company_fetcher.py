@@ -5,13 +5,16 @@ import time
 def visit_company_page(driver):
     driver.find_element(By.CSS_SELECTOR,'[data-field="experience_company_logo"]').click()
     time.sleep(20)
-    element = driver.find_element(By.CSS_SELECTOR, "h1.org-top-card-summary__title span[dir='ltr']")
-    text = element.text
-    print(text)
-    about = driver.find_element(By.LINK_TEXT, 'About')
-    about.click()
-    time.sleep(20)
-    return text
+    try:
+        element = driver.find_element(By.CSS_SELECTOR, "h1.org-top-card-summary__title span[dir='ltr']")
+        text = element.text
+        print(text)
+        about = driver.find_element(By.LINK_TEXT, 'About')
+        about.click()
+        time.sleep(20)
+        return text
+    except:
+        return 'NULL'
 
 def scrap_about(driver):
     page_source = driver.page_source

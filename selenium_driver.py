@@ -92,7 +92,10 @@ def email_fetcher(url):
     email = email_resolver(driver)
     hq_phone = get_hq_number(driver)
     company_name = visit_company_page(driver)
-    website, industry, company_size, headquaters = scrap_about(driver)
+    if company_name == 'NULL':
+        website, industry, company_size, headquaters = 'NULL', 'NULL', 'NULL', 'NULL'
+    else:
+        website, industry, company_size, headquaters = scrap_about(driver)
     time.sleep(20)
     driver.quit()
     return [name, email, title, company_name, website, hq_phone, industry, company_size, headquaters]
